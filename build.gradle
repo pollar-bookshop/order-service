@@ -21,10 +21,12 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation 'org.projectlombok:lombok:1.18.22'
 
 	runtimeOnly 'org.postgresql:postgresql'
 	runtimeOnly 'org.postgresql:r2dbc-postgresql'
 	runtimeOnly 'org.flywaydb:flyway-core' // 마이그레이션을 통해 데이터베이스 버전 관리할 수 있는 기능 제공
+	runtimeOnly 'org.flywaydb:flyway-database-postgresql' // 이 의존성 추가 안하면 Unsupported Database: PostgreSQL 예외 발생
 	runtimeOnly 'org.springframework:spring-jdbc' // JDBC API와 스프링의 통합을 제공
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
