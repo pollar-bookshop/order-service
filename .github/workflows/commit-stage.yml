@@ -3,7 +3,7 @@ on: push # 새 코드를 저장소로 푸쉬하면 워크플로를 시작한다.
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: pollar-bookshop/catalog-service
+  IMAGE_NAME: pollar-bookshop/order-service
   VERSION: latest # 지금은 새 이미지를 latest로 지정한다.
 
 jobs:
