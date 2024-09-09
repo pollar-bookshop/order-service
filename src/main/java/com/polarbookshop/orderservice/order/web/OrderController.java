@@ -23,7 +23,6 @@ public class OrderController {
 
     @PostMapping
     public Mono<Order> submitOrder(@RequestBody @Valid OrderRequest orderRequest) {
-        Mono<Order> orderMono = orderService.submitOrder(orderRequest.getIsbn(), orderRequest.getQuantity());
-        return orderMono;
+        return orderService.submitOrder(orderRequest.getIsbn(), orderRequest.getQuantity());
     }
 }
