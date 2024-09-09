@@ -1,17 +1,17 @@
 package com.polarbookshop.orderservice.order.domain;
 
 import com.polarbookshop.orderservice.book.Book;
-import com.polarbookshop.orderservice.book.BoolClient;
+import com.polarbookshop.orderservice.book.BookClient;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
 public class OrderService {
-    private final BoolClient bookClient;
+    private final BookClient bookClient;
     private final OrderRepository orderRepository;
 
-    public OrderService(BoolClient boolClient, OrderRepository orderRepository) {
+    public OrderService(BookClient boolClient, OrderRepository orderRepository) {
         this.bookClient = boolClient;
         this.orderRepository = orderRepository;
     }
