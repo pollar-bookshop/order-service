@@ -8,7 +8,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("orders")
+@RequestMapping("/orders")
 public class OrderController {
     private final OrderService orderService;
 
@@ -21,7 +21,7 @@ public class OrderController {
         return orderService.getAllOrders();
     }
 
-    @PostMapping
+    @PostMapping("/")
     public Mono<Order> submitOrder(@RequestBody @Valid OrderRequest orderRequest) {
         return orderService.submitOrder(orderRequest.getIsbn(), orderRequest.getQuantity());
     }

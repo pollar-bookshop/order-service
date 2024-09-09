@@ -40,6 +40,10 @@ public class Order {
         this.version = version;
     }
 
+    public OrderStatus getStatus() {
+        return status;
+    }
+
     public static Order of(String bookIsbn, String bookName, Double bookPrice,
                            Integer quantity, OrderStatus status) {
         return new Order(null, bookIsbn, bookName, bookPrice, quantity, status, null, null, 0);

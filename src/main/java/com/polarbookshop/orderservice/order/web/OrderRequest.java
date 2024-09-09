@@ -17,6 +17,11 @@ public class OrderRequest {
     @Max(value = 5, message = "You cannot order more than 5 items")
     Integer quantity;
 
+    public OrderRequest(String isbn, Integer quantity) {
+        this.isbn = isbn;
+        this.quantity = quantity;
+    }
+
     public String getIsbn() {
         return isbn;
     }
