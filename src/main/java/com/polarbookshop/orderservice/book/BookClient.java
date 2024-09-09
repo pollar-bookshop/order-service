@@ -9,11 +9,11 @@ import reactor.util.retry.Retry;
 import java.time.Duration;
 
 @Component
-public class BoolClient {
+public class BookClient {
     private static final String BOOKS_ROOT_API = "/books/";
     private final WebClient webClient;
 
-    public BoolClient(WebClient webClient) {
+    public BookClient(WebClient webClient) {
         this.webClient = webClient;
     }
 
