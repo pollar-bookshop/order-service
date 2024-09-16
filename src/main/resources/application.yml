@@ -18,6 +18,20 @@ spring:
       max-create-connection-time: 2s # ??? ?? ?? ??? ?? ??? ??? ? ?? ???? ??
       initial-size: 5
       max-size: 10
+  cloud:
+    function:
+      definition: dispatchOrder # 스프링 클라우드 함수에 의해 관리될 함수 정의
+    stream:
+      bindings:
+        dispatchOrder-in-0: # 입력 바인딩
+          destination: order-dispatched # 바인더를 연결할 대상의 브로커에서의 실제 이름 (래빗MQ의 익스체인지)
+          group: {spring:application:name}
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: user
+    password: password
+    connection-timeout: 5s
   flyway:
     user: ${spring.r2dbc.username}
     password: ${spring.r2dbc.password}

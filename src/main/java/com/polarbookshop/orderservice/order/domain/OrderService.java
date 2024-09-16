@@ -2,6 +2,7 @@ package com.polarbookshop.orderservice.order.domain;
 
 import com.polarbookshop.orderservice.book.Book;
 import com.polarbookshop.orderservice.book.BookClient;
+import com.polarbookshop.orderservice.order.event.OrderDispatchedMessage;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -40,5 +41,26 @@ public class OrderService {
     public static Order buildRejectedOrder(String bookIsbn, int quantity) {
         System.out.println("buildRejected");
         return Order.of(bookIsbn, null, null, quantity, OrderStatus.REJECTED);
+    }
+
+    public Flux<Order> consumeOrderDispatchedEvent(Flux<OrderDispatchedMessage> flux) {
+        return flux
+                .flatMap(message -> orderRepository.findById(message.orderId()))
+                .map(this::buildDispatchedOrder) // 주문의 상태를 '배송됨'으로 업데이트한다.
+                .flatMap(orderRepository::save);
+    }
+
+    private Order buildDispatchedOrder(Order existingOrder) {
+        return new Order(
+                existingOrder.getId(),
+                existingOrder.getBookIsbn(),
+                existingOrder.getBookName(),
+                existingOrder.getBookPrice(),
+                existingOrder.getQuantity(),
+                OrderStatus.DISPATCHED,
+                existingOrder.getCreatedDate(),
+                existingOrder.getLastModifiedDate(),
+                existingOrder.getVersion()
+        );
     }
 }
