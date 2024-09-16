@@ -21,7 +21,7 @@ public class OrderController {
         return orderService.getAllOrders();
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public Mono<Order> submitOrder(@RequestBody @Valid OrderRequest orderRequest) {
         return orderService.submitOrder(orderRequest.getIsbn(), orderRequest.getQuantity());
     }

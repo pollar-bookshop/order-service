@@ -10,7 +10,6 @@ import org.springframework.data.relational.core.mapping.Table;
 import java.time.Instant;
 
 @Table("orders")
-@Getter
 public class Order {
     @Id
     Long id;
@@ -49,5 +48,37 @@ public class Order {
     public static Order of(String bookIsbn, String bookName, Double bookPrice,
                            Integer quantity, OrderStatus status) {
         return new Order(null, bookIsbn, bookName, bookPrice, quantity, status, null, null, 0);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getBookIsbn() {
+        return bookIsbn;
+    }
+
+    public String getBookName() {
+        return bookName;
+    }
+
+    public Double getBookPrice() {
+        return bookPrice;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public Instant getCreatedDate() {
+        return createdDate;
+    }
+
+    public Instant getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
+    public int getVersion() {
+        return version;
     }
 }
