@@ -33,6 +33,7 @@ dependencies {
 	implementation 'com.squareup.okhttp3:okhttp:4.11.0' // okhttp3.HttpUrl을 사용하려면 이 의존성까지 같이 설정해 주어야 함
 
 	implementation 'org.springframework.cloud:spring-cloud-stream-binder-rabbit'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
 
 	runtimeOnly 'org.postgresql:postgresql'
 	runtimeOnly 'org.postgresql:r2dbc-postgresql'
