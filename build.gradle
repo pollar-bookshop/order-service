@@ -41,6 +41,7 @@ dependencies {
 //	runtimeOnly 'org.flywaydb:flyway-database-postgresql' // 이 의존성 추가 안하면 Unsupported Database: PostgreSQL 예외 발생
 	runtimeOnly 'org.springframework:spring-jdbc' // JDBC API와 스프링의 통합을 제공
 
+	testImplementation 'org.springframework.security:spring-security-test'
 	testImplementation 'com.squareup.okhttp3:mockwebserver:4.11.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.boot:spring-boot-testcontainers'
