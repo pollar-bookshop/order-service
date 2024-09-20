@@ -10,7 +10,7 @@ ext {
 	set('springCloudVersion', "2022.0.4")
 	set('testcontainersVersion', "1.19.8")
 	set('testKeycloakVersion', "3.3.1")
-
+	set('otelVersion', "1.33.3")
 }
 
 group = 'com.polarbookshop'
@@ -32,12 +32,12 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	implementation 'org.projectlombok:lombok:1.18.22'
 	implementation 'com.squareup.okhttp3:okhttp:4.11.0' // okhttp3.HttpUrl을 사용하려면 이 의존성까지 같이 설정해 주어야 함
-
 	implementation 'org.springframework.cloud:spring-cloud-stream-binder-rabbit'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
 	runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
+	runtimeOnly "io.opentelemetry.javaagent:opentelemetry-javaagent:${otelVersion}"
 	runtimeOnly 'org.postgresql:postgresql'
 	runtimeOnly 'org.postgresql:r2dbc-postgresql'
 	runtimeOnly 'org.flywaydb:flyway-core' // 마이그레이션을 통해 데이터베이스 버전 관리할 수 있는 기능 제공
