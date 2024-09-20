@@ -7,9 +7,10 @@ plugins {
 }
 
 ext {
-//	set('springCloudVersion', "2021.0.9")
 	set('springCloudVersion', "2022.0.4")
 	set('testcontainersVersion', "1.19.8")
+	set('testKeycloakVersion', "3.3.1")
+
 }
 
 group = 'com.polarbookshop'
@@ -46,6 +47,7 @@ dependencies {
 	testImplementation 'com.squareup.okhttp3:mockwebserver:4.11.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+	testImplementation "com.github.dasniko:testcontainers-keycloak:${testKeycloakVersion}"
 	testImplementation 'io.projectreactor:reactor-test'
 	testImplementation 'org.testcontainers:junit-jupiter'
 	testImplementation 'org.testcontainers:postgresql'
