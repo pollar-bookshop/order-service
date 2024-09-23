@@ -1,0 +1,29 @@
+name: Acceptance Stage
+on:
+  workflow_run:
+    workflows: ['Commit Stage']
+    types: [completed]
+    branches: main
+concurrency: acceptance # 한 번에 하나의 워크플로만 실행시킨다.
+
+# 이 작업은 커밋 단계가 성공한 이후 실행된다.
+jobs:
+  functional:
+    name: Functional Acceptance Tests
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-22.04
+    steps:
+      - run: echo "Running functional acceptance tests"
+
+  performance:
+    name: Performance Tests
+    if: ${{{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-22.04
+    steps:
+      - run: echo "Running performance tests"
+  security:
+    name: Security Tests
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-22.04
+    steps:
+      - run: echo "Running security tests"
