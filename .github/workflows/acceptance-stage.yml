@@ -6,6 +6,13 @@ on:
     branches: main
 concurrency: acceptance # 한 번에 하나의 워크플로만 실행시킨다.
 
+env:
+  OWNER: pollar-bookshop
+  REGISTRY: ghcr.io
+  APP_REPO: order-service
+  DEPLOY_REPO: polar-deployment
+  VERSION: ${{ github.sha }}
+
 # 이 작업은 커밋 단계가 성공한 이후 실행된다.
 jobs:
   functional:
